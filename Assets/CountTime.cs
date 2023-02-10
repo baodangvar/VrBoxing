@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OVRSimpleJSON;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CountTime : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class CountTime : MonoBehaviour
     float startingTime = 5f;
     public GameObject model;
     public GameObject UI;
+    public string namebot;
+    public string idnameplayer;
+    public TextMeshProUGUI username;
+    public TextMeshProUGUI id;
 
     [SerializeField] Text countdownText;
 
@@ -25,6 +30,10 @@ public class CountTime : MonoBehaviour
     void Start()
     {
         currentTime = startingTime;
+        namebot = LogIn.checkname;
+        idnameplayer = LogIn.checkid;
+        username.text = namebot;
+        id.text = idnameplayer;
         //WsParam wsParam = new WsParam("MatchPvPBoxing");
         //WsClient.instance.RequestToServer(wsParam.getData());
     }

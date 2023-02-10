@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "1WMHH8619P1217",
         "name": "com.VarRunNow.BoxingVR",
-        "processId": 15704,
+        "processId": 8222,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,115 +11,43 @@
         {
             "deviceId": "1WMHH8619P1217",
             "name": "com.VarRunNow.BoxingVR",
-            "processId": 10214,
+            "processId": 6101,
             "exited": true
         },
         {
             "deviceId": "1WMHH8619P1217",
             "name": "com.VarRunNow.BoxingVR",
-            "processId": 10968,
+            "processId": 5159,
             "exited": true
         },
         {
             "deviceId": "1WMHH8619P1217",
             "name": "com.VarRunNow.BoxingVR",
-            "processId": 11762,
+            "processId": 6542,
             "exited": true
         },
         {
             "deviceId": "1WMHH8619P1217",
             "name": "com.VarRunNow.BoxingVR",
-            "processId": 12531,
+            "processId": 4460,
             "exited": true
         },
         {
             "deviceId": "1WMHH8619P1217",
             "name": "com.oculus.shellenv",
-            "processId": 1959,
+            "processId": 3558,
             "exited": false
         },
         {
             "deviceId": "1WMHH8619P1217",
             "name": "com.VarRunNow.BoxingVR",
-            "processId": 16836,
+            "processId": 5542,
             "exited": false
         },
         {
             "deviceId": "1WMHH8619P1217",
             "name": "com.VarRunNow.BoxingVR",
-            "processId": 18459,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 18783,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 4595,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 5601,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 7675,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 8543,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 9550,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 9991,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 10920,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 12130,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 12715,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 14895,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHH8619P1217",
-            "name": "com.VarRunNow.BoxingVR",
-            "processId": 15704,
+            "processId": 8222,
             "exited": false
         }
     ],

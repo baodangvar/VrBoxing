@@ -16,13 +16,15 @@ public class IntroductionHandler : MonoBehaviour
 
     void Start()
     {
-       
-    }
 
+    }
     public void MoveToFirstScreen()
     {
-        LoginScreen.SetActive(false);
-        FirstScreen.SetActive(true);
+        if (LogIn.x == 2)
+        {
+            LoginScreen.SetActive(false);
+            FirstScreen.SetActive(true);
+        }
     }
 
     public void MoveToSecondScreen()

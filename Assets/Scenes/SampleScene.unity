@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.67660415, g: 0.7130529, b: 0.8343116, a: 1}
+  m_IndirectSpecularColor: {r: 0.67724127, g: 0.71363384, b: 0.8349844, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1397,6 +1397,10 @@ MonoBehaviour:
   levelToLoad: 1
   model: {fileID: 990545038}
   UI: {fileID: 1258016039}
+  namebot: 
+  idnameplayer: 
+  username: {fileID: 2142172697}
+  id: {fileID: 101136481}
   countdownText: {fileID: 735999502}
 --- !u!1001 &346350049
 PrefabInstance:
