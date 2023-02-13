@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Serialization;
+using System;
 
 /// <summary>
 /// Specific functionality for spawned anchors
@@ -305,7 +306,7 @@ public class Anchor : MonoBehaviour
         }
         if (_selectedButton)
         {
-            _selectedButton.OnDeselect(null);
+            _selectedButton.OnSelect(null);
         }
         _selectedButton = _buttonList[_menuIndex];
         _selectedButton.OnSelect(null);

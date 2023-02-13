@@ -16,6 +16,8 @@ public class CountTime : MonoBehaviour
     public string idnameplayer;
     public TextMeshProUGUI username;
     public TextMeshProUGUI id;
+    public GameObject paneel;
+    public GameObject panelenergy;
 
     [SerializeField] Text countdownText;
 
@@ -29,6 +31,10 @@ public class CountTime : MonoBehaviour
     //}
     void Start()
     {
+        if (LogIn.y == 2)
+        {
+            paneel.SetActive(true);
+        }
         currentTime = startingTime;
         namebot = LogIn.checkname;
         idnameplayer = LogIn.checkid;
@@ -46,20 +52,20 @@ public class CountTime : MonoBehaviour
         countdownText.text = currentTime.ToString("f0");
         if (currentTime <= 0f)
         {
-
+            if (LogIn.y == 1)
+            {
+                paneel.SetActive(true);
+            }
             var sence = "";
             if (levelToLoad == 1f)
             {
-                //sence = "canh2";
-                //Application.LoadLevel(sence);
                 model.SetActive(true);
                 UI.SetActive(false);
-                //WsParam wsParam = new WsParam("MatchPvPBoxing");
-                //WsClient.instance.RequestToServer(wsParam.getData());
             }
 
         }
     }
+
     //public void OnResponse(JSONNode data)
     //{
     //    string cmd = data[ParamKey.COMMAND].Value;

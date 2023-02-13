@@ -44,6 +44,9 @@ public class LogIn : MonoBehaviour
     public static string id;
     public static string dt=null;
     public static int x = 0;
+    public static string dt1;
+    public static int y = 0;
+    public string energy;
     [SerializeField]
     TMP_InputField  userNameInputField, passwordInputField;
     [SerializeField]
@@ -71,6 +74,12 @@ public class LogIn : MonoBehaviour
         public player player1;
         public player player2;
         public string id;
+        public fightingRoom fightingRoom;
+    }
+    public partial class fightingRoom
+    {
+        public player player1;
+        public player player2;
     }
     public partial class player
     {
@@ -101,7 +110,7 @@ public class LogIn : MonoBehaviour
         {
             if (x == 0)
             {
-                signinPass.onClick.AddListener(HandleLogin);
+                signinPass.onClick.AddListener(() => HandleLogin());
                 Debug.Log("dang nhap thanh cong");
                 //Login("dieudtpro@gmail.com", "123456");
                 x++;
@@ -128,7 +137,7 @@ public class LogIn : MonoBehaviour
     {
         string username = userNameInputField.text;
         string password = passwordInputField.text;
-        Login(username, password);
+
     }
 
     public void Login(string email, string password)
@@ -190,6 +199,16 @@ public class LogIn : MonoBehaviour
                 {
                     LoginResult1 rs = JsonUtility.FromJson<LoginResult1>(e.Data);
                     Debug.Log(e.Data);
+                    energy = rs.ToString();
+                    dt1 = rs.fightingRoom.ToString();
+                    if (dt1.Length >= 0)
+                    {
+                        y = 1;
+                    }
+                    if(energy== "Not enough energy. Requires at least 3 energy!!!")
+                    {
+                        y = 2;
+                    }
                 }
 
             };

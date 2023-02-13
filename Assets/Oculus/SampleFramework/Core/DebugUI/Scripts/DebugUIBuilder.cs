@@ -26,6 +26,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 #endif
 using TMPro;
+using System;
+using UnityEngine.Events;
 
 public class DebugUIBuilder : MonoBehaviour
 {
