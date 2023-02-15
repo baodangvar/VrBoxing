@@ -4,6 +4,8 @@ using OVRSimpleJSON;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static LogIn;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 public class CountTime : MonoBehaviour
 {
@@ -16,8 +18,13 @@ public class CountTime : MonoBehaviour
     public string idnameplayer;
     public TextMeshProUGUI username;
     public TextMeshProUGUI id;
-    public GameObject paneel;
-    public GameObject panelenergy;
+    public GameObject popupFitingRoom;
+    public GameObject popupRungem;
+    public GameObject popupFinMatch;
+    public GameObject popupCancelMatch;
+    
+
+
 
     [SerializeField] Text countdownText;
 
@@ -31,9 +38,10 @@ public class CountTime : MonoBehaviour
     //}
     void Start()
     {
+        
         if (LogIn.y == 2)
         {
-            paneel.SetActive(true);
+            popupRungem.SetActive(true);
         }
         currentTime = startingTime;
         namebot = LogIn.checkname;
@@ -48,24 +56,32 @@ public class CountTime : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
-        currentTime -= 1f * Time.deltaTime;
-        countdownText.text = currentTime.ToString("f0");
-        if (currentTime <= 0f)
+        if (BoxingMode.mode == "PVE")
         {
-            if (LogIn.y == 1)
+            UI.SetActive(false);
+            model.SetActive(true);
+        }
+        if (BoxingMode.mode == "PVP")
+        {
+            currentTime -= 1f * Time.deltaTime;
+            countdownText.text = currentTime.ToString("f0");
+            if (currentTime <= 0f)
             {
-                paneel.SetActive(true);
-            }
-            var sence = "";
-            if (levelToLoad == 1f)
-            {
-                model.SetActive(true);
-                UI.SetActive(false);
-            }
+                if (LogIn.y == 1)
+                {
+                    popupFitingRoom.SetActive(true);
+                }
+                var sence = "";
+                if (levelToLoad == 1f)
+                {
+                    model.SetActive(true);
+                    UI.SetActive(false);
+                }
 
+            }
         }
     }
-
+    
     //public void OnResponse(JSONNode data)
     //{
     //    string cmd = data[ParamKey.COMMAND].Value;

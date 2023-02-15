@@ -8,6 +8,8 @@ using System.Collections.Concurrent;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using Unity.VisualScripting.Antlr3.Runtime;
+
 public class MyInfo
 {
     public static string SESSION = "";
@@ -40,12 +42,17 @@ public class LogIn : MonoBehaviour
 {
     public static string checkname;
     public static string checkid;
+    public static string idPve = "";
     public static string name;
     public static string id;
     public static string dt=null;
     public static int x = 0;
     public static string dt1;
     public static int y = 0;
+
+
+    public static string token;
+
     public string energy;
     [SerializeField]
     TMP_InputField  userNameInputField, passwordInputField;
@@ -65,6 +72,17 @@ public class LogIn : MonoBehaviour
         public string accessToken;
         public string session;
         public string username;
+        public string id;
+    }
+    [Serializable]
+    public partial class ResponseMatchPve
+    {
+        public data4 data;
+        public string cmd;
+    }
+    [Serializable]
+    public partial class data4
+    {
         public string id;
     }
     public partial class LoginResult1
@@ -110,9 +128,8 @@ public class LogIn : MonoBehaviour
         {
             if (x == 0)
             {
-                signinPass.onClick.AddListener(() => HandleLogin());
-                Debug.Log("dang nhap thanh cong");
-                //Login("dieudtpro@gmail.com", "123456");
+                //signinPass.onClick.AddListener(() => HandleLogin());
+               //Login("dieu.dev23@gmail.com", "123456");//xoa
                 x++;
             }
         }
@@ -137,6 +154,7 @@ public class LogIn : MonoBehaviour
     {
         string username = userNameInputField.text;
         string password = passwordInputField.text;
+        Login(username, password);
 
     }
 
@@ -163,7 +181,8 @@ public class LogIn : MonoBehaviour
                 }
                 if (rs.accessToken != null)
                 {
-                    dt = rs.accessToken; 
+                    dt = rs.accessToken;
+                    token = dt;
                     Debug.Log("dang nhap thanh cong");
                 }
     }
@@ -182,6 +201,7 @@ public class LogIn : MonoBehaviour
         Debug.Log("Initial State : " + ws.ReadyState);
         ws.OnMessage += (sender, e) =>
         {
+
         };
         ws.OnError += (sender, e) =>
         {

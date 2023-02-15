@@ -18,12 +18,17 @@ public class IntroductionHandler : MonoBehaviour
     {
 
     }
+    private void Update()
+    {
+        MoveToFirstScreen();
+    }
     public void MoveToFirstScreen()
     {
         if (LogIn.x == 2)
         {
             LoginScreen.SetActive(false);
             FirstScreen.SetActive(true);
+            //Movesence();//xóa test 
         }
     }
 
