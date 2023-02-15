@@ -25,7 +25,10 @@ public class Maria : MonoBehaviour
     public GameObject backTrung;
     float checkAnimationAttackOrDefend = 0;
     public GameObject cameraOVR;
-    public GameObject healthMe;
+    //public GameObject healthMe;
+    public GameObject popupResult;
+    public static string stthqplayer1 ="";
+
 
 
 
@@ -38,19 +41,20 @@ public class Maria : MonoBehaviour
         anim.SetInteger("AttackIndex", 6);
         anim.SetTrigger("Attack");
 
+
     }
     void Update()
     {
         // cameraOVR
-        var posotionOVR = cameraOVR.transform.localPosition;
-        print("OVR X" + posotionOVR.x);
-        print("OVR Y" + posotionOVR.y);
-        print("OVR Z" + posotionOVR.z);
-        healthMe.transform.localPosition = new Vector3(posotionOVR.x + posotionOVR.x * 3, posotionOVR.y + posotionOVR.y * 3, posotionOVR.z + posotionOVR.y * 3); ;
-        var healthMeOVR = healthMe.transform.localPosition;
-        print("healthMeOVR X" + healthMeOVR.x);
-        print("healthMeOVR Y" + healthMeOVR.y);
-        print("healthMeOVR Z" + healthMeOVR.z);
+        //var posotionOVR = cameraOVR.transform.localPosition;
+        //print("OVR X" + posotionOVR.x);
+        //print("OVR Y" + posotionOVR.y);
+        //print("OVR Z" + posotionOVR.z);
+        //healthMe.transform.localPosition = new Vector3(posotionOVR.x + posotionOVR.x * 3, posotionOVR.y + posotionOVR.y * 3, posotionOVR.z + posotionOVR.y * 3); ;
+        //var healthMeOVR = healthMe.transform.localPosition;
+        //print("healthMeOVR X" + healthMeOVR.x);
+        //print("healthMeOVR Y" + healthMeOVR.y);
+        //print("healthMeOVR Z" + healthMeOVR.z);
         //
         var positionL = HandL.transform.position;
         var positionR = HandR.transform.position;
@@ -67,7 +71,7 @@ public class Maria : MonoBehaviour
                     {
                         anim.SetInteger("AttackIndex", 2);
                         anim.SetTrigger("Attack");
-                        hqplayer1.value -= 3;
+                        hqplayer1.value -= 10;
                         checkAnimationAttackOrDefend = 1;
                     }
                 }
@@ -90,7 +94,7 @@ public class Maria : MonoBehaviour
                     {
                         anim.SetInteger("AttackIndex", 2);
                         anim.SetTrigger("Attack");
-                        hqplayer1.value -= 3;
+                        hqplayer1.value -= 10;
                         checkAnimationAttackOrDefend = 1;
                     }
                 }
@@ -105,7 +109,10 @@ public class Maria : MonoBehaviour
         if (hqplayer1.value == 0)
         {
             winLow = 1;
-        }
+            stthqplayer1 = "win";
+            popupResult.SetActive(true);
+            mode3d.SetActive(false);
+        }//mở lại
 
 
 

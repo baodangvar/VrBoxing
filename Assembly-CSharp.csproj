@@ -59,6 +59,7 @@
     <Compile Include="Assets/Oculus/SampleFramework/Core/Locomotion/Scripts/TeleportAimHandlerParabolic.cs" />
     <Compile Include="Assets/Samples/Universal RP/12.1.7/URP Package Samples/CameraStacking/3D Skybox/Scripts/SkyboxCamera.cs" />
     <Compile Include="Assets/Oculus/SampleFramework/Usage/Firebase/StartCrashlytics.cs" />
+    <Compile Include="Assets/Scenes/script/button.cs" />
     <Compile Include="Assets/CountTime.cs" />
     <Compile Include="Assets/Oculus/SampleFramework/Usage/Passthrough/Scripts/PassthroughProjectionSurface.cs" />
     <Compile Include="Assets/Oculus/SampleFramework/Usage/Passthrough/Scripts/HandMeshUI.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/DropdownSample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets/Oculus/SampleFramework/Usage/HandsTrainExample/Scripts/TrainCarBase.cs" />
+    <Compile Include="Assets/ResultBoxing.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexColorCycler.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TeleType.cs" />
     <Compile Include="Assets/Oculus/SampleFramework/Core/HandsInteraction/Scripts/Tools/RayTool.cs" />
