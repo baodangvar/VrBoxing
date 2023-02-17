@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "1WMHH8619P1217",
         "name": "com.VarRunNow.BoxingVR",
-        "processId": 26674,
+        "processId": 9519,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,24 @@
             "deviceId": "1WMHH8619P1217",
             "name": "com.VarRunNow.BoxingVR",
             "processId": 26674,
+            "exited": false
+        },
+        {
+            "deviceId": "1WMHH8619P1217",
+            "name": "com.VarRunNow.BoxingVR",
+            "processId": 5929,
+            "exited": false
+        },
+        {
+            "deviceId": "1WMHH8619P1217",
+            "name": "com.VarRunNow.BoxingVR",
+            "processId": 4347,
+            "exited": false
+        },
+        {
+            "deviceId": "1WMHH8619P1217",
+            "name": "com.VarRunNow.BoxingVR",
+            "processId": 9519,
             "exited": false
         }
     ],

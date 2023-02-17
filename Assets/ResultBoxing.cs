@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WebSocketSharp;
-using static LogIn;
 
 public class ResultBoxing : MonoBehaviour
 {
@@ -61,18 +60,28 @@ public class ResultBoxing : MonoBehaviour
     void Update()
     {
         if (countTimecallPVE > 0) countTimecallPVE -= 1f * Time.deltaTime;
-        print("AAAAAAAA");
-        print("AAAAAAAA" + Maria.stthqplayer1);
-        print("AAAAAAAA" +LogIn.idPve.Length);
-
-        if (Maria.stthqplayer1 == "win" && LogIn.idPve.Length > 0)
+        if (Maria.stthqplayer1 == "win" && LogIn.idPve.Length > 0 && BoxingMode.mode == "PVE")
         {
-            print("AAAAAAAA truoc " + countTimecallPVE);
-            if (countTimecallPVE < 1 && countTimecallPVE >0)
+            if (countTimecallPVE < 1 && countTimecallPVE > 0)
             {
                 ResultPve(LogIn.idPve, true, true);
                 countTimecallPVE = -1;
-                print("AAAAAAAA sau" + countTimecallPVE);
+            }
+        }
+        if (Maria.stthqplayer1 == "low" && LogIn.idPve.Length > 0 && BoxingMode.mode == "PVE")
+        {
+            if (countTimecallPVE < 1 && countTimecallPVE > 0)
+            {
+                ResultPve(LogIn.idPve, false, true);
+                countTimecallPVE = -1;
+            }
+        }
+        if (BoxingMode.mode == "PVP" && CountTime.idResPvp.Length > 0)
+        {
+            if (countTimecallPVE < 1 && countTimecallPVE > 0)
+            {
+                ResultPvp(CountTime.idResPvp);
+                countTimecallPVE = -1;
             }
         }
     }
@@ -80,9 +89,8 @@ public class ResultBoxing : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
-    public void ResultPve(string roomID,bool isWinnercall, bool isDraw)
+    public void ResultPve(string roomID, bool isWinnercall, bool isDraw)
     {
-        print("BBBBBBBB");
         var blockData = new Dictionary<string, object>();
         blockData["roomId"] = roomID;
         blockData["isWinner"] = isWinnercall;
@@ -95,21 +103,56 @@ public class ResultBoxing : MonoBehaviour
         {
             if (e.IsText)
             {
-                print("CCCCCC");
-
+                print("cccc");
                 Debug.Log(e.Data);
                 ResponseMatchPveRes responseMatchPveRes = JsonConvert.DeserializeObject<ResponseMatchPveRes>(e.Data);
                 var resPerson = responseMatchPveRes.data;
 
-                consumedEnergy.text ="- "+ resPerson.extendedData.boxingResult.consumedEnergy;
-                consumableDurability.text ="x " + resPerson.extendedData.boxingResult.consumableDurability;
-                rungemEarned.text = "+ "+ resPerson.extendedData.boxingResult.rungemEarned;
-                isWinner.text = resPerson.extendedData.winRate+ " %";
+                consumedEnergy.text = "- " + resPerson.extendedData.boxingResult.consumedEnergy;
+                consumableDurability.text = "x " + resPerson.extendedData.boxingResult.consumableDurability;
+                rungemEarned.text = "+ " + resPerson.extendedData.boxingResult.rungemEarned;
+                isWinner.text = resPerson.extendedData.winRate + " %";
                 if (Maria.stthqplayer1 == "win")
                 {
                     win.SetActive(true);
                 }
-                else
+                if (Maria.stthqplayer1 == "low")
+                {
+                    low.SetActive(true);
+                }
+            }
+
+        };
+        ws.OnError += (sender, e) =>
+        {
+            Debug.Log(e.Message);
+        };
+    }
+    public void ResultPvp(string roomID)
+    {
+        var blockData = new Dictionary<string, object>();
+        blockData["roomId"] = roomID;
+        WsParam wsParam = new WsParam("GetResultOfMatchBoxing");
+        wsParam.pushParam("params", blockData);
+        ws.Send(wsParam.getData());
+        ws.OnMessage += (sender, e) =>
+        {
+            if (e.IsText)
+            {
+
+                Debug.Log(e.Data);
+                ResponseMatchPveRes responseMatchPvpRes = JsonConvert.DeserializeObject<ResponseMatchPveRes>(e.Data);
+                var resMatchPvp = responseMatchPvpRes.data;
+
+                consumedEnergy.text = "- " + resMatchPvp.extendedData.boxingResult.consumedEnergy;
+                consumableDurability.text = "x " + resMatchPvp.extendedData.boxingResult.consumableDurability;
+                rungemEarned.text = "+ " + resMatchPvp.extendedData.boxingResult.rungemEarned;
+                isWinner.text = resMatchPvp.extendedData.winRate + " %";
+                if (resMatchPvp.extendedData.boxingResult.isWinner == "true")
+                {
+                    win.SetActive(true);
+                }
+                if (resMatchPvp.extendedData.boxingResult.isWinner == "false")
                 {
                     low.SetActive(true);
                 }
@@ -130,15 +173,11 @@ public class ResultBoxing : MonoBehaviour
         ws = new WebSocket("wss://stg-game-api.runnow.io:21141?token=" + LogIn.token);
         ws.SslConfiguration.EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12;
         ws.Connect();
-        Debug.Log("Initial State : " + ws.ReadyState);
-        ws.OnMessage += (sender, e) =>
-        {
-
-        };
-        ws.OnError += (sender, e) =>
-        {
-            Debug.Log(e.Message);
-        };
+        //Debug.Log("Initial State : " + ws.ReadyState);
+        //ws.OnError += (sender, e) =>
+        //{
+        //    Debug.Log(e.Message);
+        //};
         yield return null;
 
     }

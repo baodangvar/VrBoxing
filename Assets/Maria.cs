@@ -10,6 +10,7 @@ public class Maria : MonoBehaviour
     public GameObject HandL;
     public GameObject HandR;
     public Slider hqplayer1;
+    public Slider hqplayer2;
     float check = 0;
     float checkr = 0;
 
@@ -25,12 +26,8 @@ public class Maria : MonoBehaviour
     public GameObject backTrung;
     float checkAnimationAttackOrDefend = 0;
     public GameObject cameraOVR;
-    //public GameObject healthMe;
     public GameObject popupResult;
     public static string stthqplayer1 ="";
-
-
-
 
     void Start()
     {
@@ -40,22 +37,9 @@ public class Maria : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetInteger("AttackIndex", 6);
         anim.SetTrigger("Attack");
-
-
     }
     void Update()
     {
-        // cameraOVR
-        //var posotionOVR = cameraOVR.transform.localPosition;
-        //print("OVR X" + posotionOVR.x);
-        //print("OVR Y" + posotionOVR.y);
-        //print("OVR Z" + posotionOVR.z);
-        //healthMe.transform.localPosition = new Vector3(posotionOVR.x + posotionOVR.x * 3, posotionOVR.y + posotionOVR.y * 3, posotionOVR.z + posotionOVR.y * 3); ;
-        //var healthMeOVR = healthMe.transform.localPosition;
-        //print("healthMeOVR X" + healthMeOVR.x);
-        //print("healthMeOVR Y" + healthMeOVR.y);
-        //print("healthMeOVR Z" + healthMeOVR.z);
-        //
         var positionL = HandL.transform.position;
         var positionR = HandR.transform.position;
         print("x" + positionL.x);
@@ -113,10 +97,7 @@ public class Maria : MonoBehaviour
             popupResult.SetActive(true);
             mode3d.SetActive(false);
         }//mở lại
-
-
-
-
+        
         //NPC
 
         if (winLow == 0)
@@ -148,33 +129,24 @@ public class Maria : MonoBehaviour
             }
             if (timeTurn < 3.1 && timeTurn > 2)
             {
-                //if (PlayerAction == 4 || PlayerAction == 5)
-                //{
-                //    PlayerAction = 0;
-                //    if (hit == true)
-                //    {
-                //        if (turnl == 0) turnl = 1;
-                //        anim.SetInteger("AttackIndex", 3);
-                //        anim.SetTrigger("Attack");
-                //    }
-                //}
-                //else
-                //{
-                //    if (HandController.checkAnimationAttackOrDefend == 1)
-                //    {
-                //        anim.SetInteger("AttackIndex", 0);
-                //        anim.SetTrigger("Attack");
-                //    }
-                //}
+               
                 backNham.SetActive(false);
-                //if (UIManager.mode == "PVE")
-                //{
                 if (checkAnimationAttackOrDefend == 0)
                 {
-
                     anim.SetInteger("AttackIndex", 3);
                     anim.SetTrigger("Attack");
-                    if (turnl == 0) turnl = 1;
+                    if (turnl == 0)
+                    {
+                        turnl = 1;
+                        hqplayer2.value -= 10;
+                        if (hqplayer2.value == 0)
+                        {
+                            winLow = 1;
+                            stthqplayer1 = "low";
+                            popupResult.SetActive(true);
+                            mode3d.SetActive(false);
+                        }
+                    }
                 }
                 if (checkAnimationAttackOrDefend == 1)
                 {
@@ -184,12 +156,6 @@ public class Maria : MonoBehaviour
             }
             if (timeTurn < 2 && timeTurn > 1.5)
             {
-                //if (PlayerAction == 4 || PlayerAction == 5)
-                //{
-                //  PlayerAction = 0;
-                //  anim.SetInteger("AttackIndex", 3);
-                //  anim.SetTrigger("Attack");
-                //}
                 var positionmode3D = mode3d.transform.localPosition;
 
                 if (turnl == 1) backTrung.SetActive(true);
@@ -205,17 +171,8 @@ public class Maria : MonoBehaviour
             }
             if (timeTurn < 1.5 && timeTurn > 0)
             {
-                //if (PlayerAction == 4 || PlayerAction == 5)
-                //{
-                //  PlayerAction = 0;
-                //  anim.SetInteger("AttackIndex", 3);
-                //  anim.SetTrigger("Attack");
-                //}
-                //else
-                //{
                 anim.SetInteger("AttackIndex", 6);
                 anim.SetTrigger("Attack");
-                //}
                 backBungNo.SetActive(false);
                 backTrung.SetActive(false);
 

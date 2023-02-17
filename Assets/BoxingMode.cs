@@ -5,7 +5,8 @@ using UnityEngine;
 using WebSocketSharp;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static LogIn;
+using System;
+using Newtonsoft.Json;
 
 public class BoxingMode : MonoBehaviour
 {
@@ -23,16 +24,35 @@ public class BoxingMode : MonoBehaviour
     private WebSocket ws = null;
 
     public static string mode ="";
-
+    //pve
+    [Serializable]
+    public partial class ResponseMatchPve
+    {
+        public data4 data;
+        public string cmd;
+    }
+    [Serializable]
+    public partial class data4
+    {
+        public string id;
+    }
+    
     void Start()
     {
         StartCoroutine(InitSocket());
-//        createPve();//xóa test
-  //      SceneManager.LoadScene("SampleScene");
+        //createPve();//xóa test
+        //mode = "PVE";//xóa
+         //SceneManager.LoadScene("SampleScene");//xoa
+        //mode = "PVP";//xoa
+
     }
     public void OnButtonStartMode()
     {
         if(mode =="PVE") createPve();
+        if (mode == "PVP")
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
     public void OnButtonChoosePve()
     {
@@ -67,6 +87,7 @@ public class BoxingMode : MonoBehaviour
             Debug.Log(e.Message);
         };
     }
+    
     public IEnumerator InitSocket()
     {
         ws = new WebSocket("wss://stg-game-api.runnow.io:21141?token=" + LogIn.token);
